@@ -28,7 +28,6 @@ jobs:
 
       - name: Build Docker image
         run: |
-#          docker build -t reggae-app ./backend
           docker build -f backend/Dockerfile -t reggae-app .
 
       - name: Tag image & Push Docker image to Amazon ECR
