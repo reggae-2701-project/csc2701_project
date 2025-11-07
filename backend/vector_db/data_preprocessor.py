@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 
 
 class DataPreprocessor:
-    def __init__(self, file_path, model_name="all-MiniLM-L6-v2", vector_db_url="http://3.138.107.103:6333"):
+    def __init__(self, file_path, model_name="all-MiniLM-L6-v2", vector_db_url="http://172.31.41.249:6333"):
         self.file_path = file_path
         self.vector_db_url = vector_db_url
         self.model = SentenceTransformer(model_name)
