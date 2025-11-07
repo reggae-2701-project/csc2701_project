@@ -6,7 +6,6 @@ on:
       - "backend/**"
       - ".github/workflows/deploy-backend.yml"
     branches:
-      - main
       - ci_cd
 
 jobs:
@@ -29,7 +28,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t reggae-app ./backend
+#          docker build -t reggae-app ./backend
+          docker build -f backend/Dockerfile -t reggae-app .
 
       - name: Tag image & Push Docker image to Amazon ECR
         run: |
@@ -57,17 +57,3 @@ jobs:
             docker pull $IMAGE_URI
             docker run -d --name backend -p 80:8080 $IMAGE_URI
 
-#      - name: Deploy on Backend EC2
-#        run: |
-#          IMAGE_URI="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}:latest"
-#
-#          echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
-#          chmod 600 private_key.pem
-#
-#          ssh -o StrictHostKeyChecking=no -i private_key.pem \
-#          ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_BACKEND_HOST }} << EOF
-#            docker pull $IMAGE_URI
-#            docker stop backend || true
-#            docker rm backend || true
-#            docker run -d --name backend -p 80:8080 $IMAGE_URI
-#          EOF

@@ -25,7 +25,7 @@ RUN pip install  --no-cache-dir -r requirements.txt \
  && pip install  --no-cache-dir -r requirements_h.txt
 
 # Copy the application code to the working directory
-COPY . .
+COPY backend ./backend
 
 # Expose the port on which the application will run
 EXPOSE 8080
