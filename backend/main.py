@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict
-from backend.rag_architecture.rag import RAG
+from rag_architecture.rag import RAG
 
 app = FastAPI()
 rag = RAG(
