@@ -14,18 +14,18 @@ FROM python:3.11.13-slim
 #  py3-scipy
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /app/backend
 
 # Copy the requirements file to the working directory
-COPY requirements.txt .
-COPY requirements_h.txt .
+COPY backend/requirements.txt .
+COPY backend/requirements_h.txt .
 
 # Install the Python dependencies
 RUN pip install  --no-cache-dir -r requirements.txt \
  && pip install  --no-cache-dir -r requirements_h.txt
 
 # Copy the application code to the working directory
-COPY backend ./backend
+COPY backend/ .
 
 # Expose the port on which the application will run
 EXPOSE 8080
