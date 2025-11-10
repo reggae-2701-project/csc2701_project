@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://172.31.44.251:8080/chat"
+API_URL = "http://172.31.44.251:80/chat"
 st.set_page_config(page_title="MScAC Chatbot", page_icon="💬", layout="centered")
 
 st.markdown(
